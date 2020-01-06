@@ -1,2 +1,2 @@
-# Curso-Fundamentos-de-JavaScript
+# Curso Fundamentos de JavaScript
 curso platzi
