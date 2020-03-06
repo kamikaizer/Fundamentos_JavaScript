@@ -5,11 +5,11 @@ const opts = { crossDomain: true }
 // crossDomain indica que se hara una peticion hacia otra pagina
 
 const onPeopleResponse = function (persona){
-  console.log(`Hola soy, ${persona.name}`)
+  console.log(`Hola, yo soy ${persona.name}`)
 }
 
 function obtenerPersonaje(id) {
   const url = `${API_URL}${PEOPLE_URL.replace(':id', id)}`
   $.get(url, opts, onPeopleResponse)
 }
-obtenerPersonaje(1)
+obtenerPersonaje(7)
