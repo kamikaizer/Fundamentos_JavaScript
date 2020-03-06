@@ -31,8 +31,3 @@ obtenerPersonaje(1, function () {
   })
 })
 // el callbackhell sirve para que los request sean en orden y no aleatoreamente como en el ejercicio de la clase anterior
-
-
-
-
-// obtenerPersonaje 1, 2, 3 saldran de manera aleatorea en la consola por el asincronismo
