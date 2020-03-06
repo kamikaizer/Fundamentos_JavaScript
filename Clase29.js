@@ -12,4 +12,8 @@ function obtenerPersonaje(id) {
   const url = `${API_URL}${PEOPLE_URL.replace(':id', id)}`
   $.get(url, opts, onPeopleResponse)
 }
-obtenerPersonaje(7)
+obtenerPersonaje(1)
+obtenerPersonaje(2)
+obtenerPersonaje(3)
+
+// obtenerPersonaje 1, 2, 3 saldran de manera aleatorea en la consola por el asincronismo
