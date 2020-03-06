@@ -7,9 +7,14 @@
   <body>
     <script>
       console.log('a')
-      setTimeout(() => console.log('b'), 2000)
-      //con el setTimeout, se genera el delay del console log 
-      console.log('c')
+      //setTimeout(() => console.log('b'), 2000)
+      //con el setTimeout, se genera el delay del console log
+      //setTimeout(() => console.log('c'), 0)
+      //queda en cola de tarea y por gerarquia imprime a,d,c y a los 2 seg b
+      setTimeout(() => console.log('d'), 2000)
+      for (var i = 0; i < 10000000000; i++){
+        
+      }
     </script>
   </body>
 </html>
