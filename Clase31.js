@@ -8,7 +8,23 @@ const opts = { crossDomain: true }
 function obtenerPersonaje(id, callback) {
   const url = `${API_URL}${PEOPLE_URL.replace(':id', id)}`
 
-  $.get(url, opts, callback)
+  // $.get(url, opts, callback).fail(function(){
+    // console.log(`Se ha proucido un error, no se a podido obtener el personaje ${id}`)
+  // })
+
+  // $
+  // .get(url,opts, callback)
+  // .fail(function(){
+    // console.log(`Se ha producido un error, no se a podido obtener el personaje ${id}`)
+  // })
+  // otra forma de escribirlo es...
+  $
+  .get(url,opts, callback)
+  .fail(() => {
+    console.log(`Se ha producido un error, no se a podido obtener el personaje ${id}`)
+  })
+
+  })
 }
 
 // CALLBACK HELL
