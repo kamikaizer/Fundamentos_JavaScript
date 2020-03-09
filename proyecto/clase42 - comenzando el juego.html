@@ -101,17 +101,61 @@
 
       class Juego {
         constructor() {
-          alert('COMENZAMOS')
           this.inicializar()
+          this.generarSecuencia()
+          this.siguienteNivel
+
         }
 
         inicializar() {
           btnEmpezar.classList.add('hide')
+          this.nivel = 1
+          this.colores = {
+// celeste: celeste se puede omitir escribir 2 veces la variable y el atributo ya que tienen el mismo nombre
+            celeste,
+            naranja,
+            violeta,
+            verde
+          }
+
+        }
+        generarSecuencia(){
+          this.secuencia = new Array(10).fill(0).map(n => Math.floor(Math.random() * 4))
+        }
+        siguienteNivel(){
+          this.iluminarSecuencia()
+          }
+
+        transformarnumeroacolor(numero){
+          switch (numero) {
+            case 0:
+              return 'celeste'
+            case 1:
+              return 'naranja'
+            case 2:
+              return 'violeta'
+            case 3:
+              return 'vierde'
+          }
+        }
+
+        iluminarSecuencia() {
+          for(var i = 0; i < this.nivel; i++) {
+            var color = this.transformarnumeroacolor(this.secuencia[i])
+            setTimeOut(() => this.iluminarcolor(color), 1000 * i)
+          }
+        }
+        iluminarcolor(color) {
+          this.colores[color].classList.add('light')
+          setTimeOut(() => this.apagarcolor(color), 350)
+        }
+        apagarcolor(color) {
+          this.colores[color].classList.remove('light')
         }
       }
 
-      function empezarJuego() {
-        var juego = new Juego()
+      function empezarJuego(){
+        window.juego = new Juego()
       }
     </script>
   </body>
