@@ -103,23 +103,21 @@
         constructor() {
           this.inicializar()
           this.generarSecuencia()
-          this.siguienteNivel
-
+          this.siguienteNivel()
         }
-
         inicializar() {
           btnEmpezar.classList.add('hide')
-          this.nivel = 1
+          this.nivel = 7
           this.colores = {
-// celeste: celeste se puede omitir escribir 2 veces la variable y el atributo ya que tienen el mismo nombre
             celeste,
             naranja,
             violeta,
             verde
           }
-
         }
-        generarSecuencia(){
+// celeste: celeste se puede omitir escribir 2 veces la variable y el atributo ya que tienen el mismo nombre
+
+        generarSecuencia() {
           this.secuencia = new Array(10).fill(0).map(n => Math.floor(Math.random() * 4))
         }
         siguienteNivel(){
@@ -139,20 +137,34 @@
           }
         }
 
+        // iluminarSecuencia() {
+        //   for(var i = 0; i < this.nivel; i++) {
+        //     var color = this.transformarnumeroacolor(this.secuencia[i])
+        //     setTimeout(() => this.iluminarcolor(color), 1000 * i)
+        //   }
+        // }
+        // al ponerle var, al cambiar el numero de nivel linea 10, lo que hara el
+        // programa es marcar x cantidad de veces el mismo color por lo que hay que usar left
+        // porque var cada ciclo for va pisando la variable color
+
         iluminarSecuencia() {
-          for(var i = 0; i < this.nivel; i++) {
-            var color = this.transformarnumeroacolor(this.secuencia[i])
-            setTimeOut(() => this.iluminarcolor(color), 1000 * i)
+          for(let i = 0; i < this.nivel; i++) {
+            const color = this.transformarnumeroacolor(this.secuencia[i])
+            setTimeout(() => this.iluminarcolor(color), 1000 * i)
           }
         }
-        iluminarcolor(color) {
-          this.colores[color].classList.add('light')
-          setTimeOut(() => this.apagarcolor(color), 350)
+
+        // al cambiarlo por let solo se aplicaran cambios en el bloque de 150
+        // a 155 sin interferir en el resto del codigo
+
+          iluminarcolor(color) {
+            this.colores[color].classList.add('light')
+            setTimeout(() => this.apagarcolor(color), 350)
+          }
+          apagarcolor(color) {
+            this.colores[color].classList.remove('light')
+          }
         }
-        apagarcolor(color) {
-          this.colores[color].classList.remove('light')
-        }
-      }
 
       function empezarJuego(){
         window.juego = new Juego()
