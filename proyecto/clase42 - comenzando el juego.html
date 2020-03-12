@@ -82,6 +82,9 @@
       .hide {
         display: none;
       }
+      *{
+        font-family: 'Arial';
+      }
     </style>
   </head>
   <body>
@@ -92,6 +95,7 @@
       <div id="verde" class="color verde right" data-color="verde"></div>
       <button id="btnEmpezar" class="btn-start" onclick="empezarJuego()">Empezar a jugar!</button>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
     <script>
       const celeste = document.getElementById('celeste')
       const violeta = document.getElementById('violeta')
@@ -102,6 +106,7 @@
 
       class Juego {
         constructor() {
+          this.inicializar = this.inicializar.bind(this)
           this.inicializar()
           this.generarSecuencia()
           setTimeout(this.siguienteNivel, 500)
@@ -109,7 +114,7 @@
         inicializar() {
           this.siguienteNivel = this.siguienteNivel.bind(this)
           this.elegirColor = this.elegirColor.bind(this)
-          btnEmpezar.classList.add('hide')
+          this.toggleBtnEmpezar()
           this.nivel = 1
           this.colores = {
             celeste,
@@ -118,6 +123,17 @@
             verde
           }
         }
+
+        // esto hace que cada ves que se reinicie el juego, aparezca el boton de iniciar
+        toggleBtnEmpezar(){
+          if (btnEmpezar.classList.contains('hide')){
+            btnEmpezar.classList.remove('hide')
+          } else {
+            btnEmpezar.classList.add('hide')
+          }
+        }
+
+
 // celeste: celeste se puede omitir escribir 2 veces la variable y el atributo ya que tienen el mismo nombre
 
         generarSecuencia() {
@@ -206,18 +222,29 @@
                 this.nivel++
                 this.eliminarEventosClick()
                 if(this.nivel === (ULTIMO_NIVEL + 1)){
-                  // gana!
+                  this.ganoElJuego()
                 } else {
                   setTimeout(this.siguienteNivel, 1000)
                 }
               }
             } else {
-              // perdio
+              this.perdioElJuego()
             }
             // console.log(this)
             // al poner this en consola se imprime el boton lineas 89 a 92
             // al poner ev muestra los parametros del boton
             // bind ata el this a los parametros del boton
+          }
+          ganoElJuego(){
+            swal('Hola', 'Felicidades, ganaste el juego', 'success')
+            .then(this.inicializar)
+            }
+          perdioElJuego(){
+            swal('Hola', 'Perdiste, sigue intentando', 'error')
+            .then(() => {
+              this.eliminarEventosClick()
+              this.inicializar()
+            })
           }
         }
 
