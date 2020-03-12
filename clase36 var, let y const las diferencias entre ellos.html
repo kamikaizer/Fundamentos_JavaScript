@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script>
+      var martin = {
+        nombre: 'Martin',
+        apellido: 'Matayoshi',
+        edad: 33
+      }
+
+      function esMayorDeEdad(persona){
+        let mensaje
+        const mayoriaDeEdad = 18
+        if(persona.edad >= 'mayoriaDeEdad'){
+          mensaje = 'es mayor de edad'
+        } else {
+          mensaje = 'es menor de edad'
+        }
+        console.log(mensaje)
+      }
+      // esMayorDeEdad(martin)
+
+
+// no se pude cambiar el var en este caso por let
+      for (var i = 0; i < 10; i++) {
+        console.log(i)
+      }
+      console.log(`termino el for, el valor de i es ${i}`)
+
+<!-- var el la forma antigua de declarar variables, ahora se usa let -->
+<!-- const es una cosntante que no puede ser modificada -->
+
+
+
+    </script>
+  </body>
+</html>
